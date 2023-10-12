@@ -18,15 +18,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
         self.stackedWidget.setCurrentIndex(0)
-        # self.pushButton_go_to_edit.clicked.connect(pass)
+        self.pushButton_go_to_edit.clicked.connect(self.go_to_edit_view)
         self.pushButton_about_developer.clicked.connect(self.open_about_developer_dialog)
         self.show()
 
+    def go_to_edit_view(self):
+        """
+        Переход к экрану редактирования JSON-файла
+        """
+        self.stackedWidget.setCurrentIndex(1)
+
     def open_about_developer_dialog(self):
         '''
-        Открытие модального окна "Новая игра"
-        Связывание сигнала close() Главного меню и кнопки "Принять"
-        в окне "Новая игра"
+        Открытие диалогового окна "О разработчике"
         '''
         self.about = AboutDeveloper()
         self.about.exec()
